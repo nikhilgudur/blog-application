@@ -25,3 +25,8 @@ def register_blueprint(app):
 
 
 app = create_app()
+
+
+@app.route('/ping')
+def pong():
+    return "pong"

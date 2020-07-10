@@ -1,7 +1,9 @@
 import jwt
+import os
+import json
 from flask import Blueprint
-from flask import request
-from password import *
+from flask import request, jsonify
+from create_password import *
 from extensions import mysql
 
 user = Blueprint('user_blueprint', __name__)
@@ -12,7 +14,7 @@ def testing():
     return "successful"
 
 
-@user.route('/register', mothods=['POST'])
+@user.route('/register', methods=['POST'])
 def register():
     """Register new user"""
 
@@ -64,7 +66,12 @@ def login():
     password_hash = generate_password(password+results['salt'])
 
     if results['password'] == password_hash:
-        token = jwt.encode({"id": results['id']}, "secret", algorithm='HS256')
-        return {"status": 200, "name": results['name'], "email": results['email'], "profile_picture": results['user_picture']}
+        token = jwt.encode({"id": results['id']},
+                           os.environ['JWT_SECRET'], algorithm='HS256').decode('utf-8')
+        print(token)
+        return_object = {"status": 200, "name": results['name'], "email": results['email'],
+                         "profile_picture": results['user_picture'], "token": token}
+        # return json.dumps(return_object)
+        return return_object
 
     return {"message": "Invalid Credentials", "status": 401}
