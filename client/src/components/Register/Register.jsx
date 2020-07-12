@@ -11,7 +11,7 @@ export const Register = () => {
   };
   return (
     <div className={styles.register}>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.register}>
         <label htmlFor="name">
           Name
           <input
@@ -42,7 +42,7 @@ export const Register = () => {
             id="password"
           />
         </label>
-        <input type="submit" value="" />
+        {/* <input type="submit" value="" /> */}
       </form>
     </div>
   );
