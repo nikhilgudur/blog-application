@@ -30,5 +30,4 @@ def generate_password(string):
 def decode_token(token):
     """Decode Token"""
 
-    encoded_token = token.split(" ")[1]
-    return jwt.decode(encoded_token, 'nikhil', algorithms=['HS256'])
+    return jwt.decode(token, os.environ['JWT_SECRET'], algorithms=['HS256'])

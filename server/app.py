@@ -20,8 +20,10 @@ def register_extension(app):
 
 def register_blueprint(app):
     from user_blueprint import user
+    from blog_blueprint import blog
 
     app.register_blueprint(user, url_prefix="/user")
+    app.register_blueprint(blog, url_prefix="/blog")
 
 
 app = create_app()

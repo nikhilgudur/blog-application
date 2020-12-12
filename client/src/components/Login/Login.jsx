@@ -21,8 +21,6 @@ const Login = ({ login, state }) => {
     login({ email: email, password: password });
   };
 
-  console.log(state);
-
   return (
     <FormGroup>
       <form onSubmit={handleLogin}>

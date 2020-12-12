@@ -4,6 +4,7 @@ import { Home } from "./components/Home/Home";
 import { Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Login from "./components/Login/Login";
+import Test from "./components/Test/Test";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
 const theme = createMuiTheme({
@@ -34,6 +35,7 @@ function App() {
     <div>
       <ThemeProvider theme={theme}>
         <Navbar />
+        <Test />
         <div style={styles.main}>
           <Switch>
             <Route

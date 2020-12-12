@@ -1,6 +1,6 @@
 import jwt
 import os
-import json
+import uuid
 from flask import Blueprint
 from flask import request, jsonify
 from create_password import *
@@ -71,7 +71,6 @@ def login():
         print(token)
         return_object = {"status": 200, "name": results['name'], "email": results['email'],
                          "profile_picture": results['user_picture'], "token": token}
-        # return json.dumps(return_object)
         return return_object
 
     return {"message": "Invalid Credentials", "status": 401}
